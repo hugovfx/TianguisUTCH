@@ -3,7 +3,9 @@ En este repositorio se encuentra nuestro sitio web de proyecto integrador
 
 
 
-`` Tablas necesarias para el funcionamiento de la API:
+`` 
+Tablas necesarias para el funcionamiento de la API:
+``
 
 ```sql
 CREATE TABLE images (
