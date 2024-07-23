@@ -1,7 +1,7 @@
 # TianguisUTCH
 En este repositorio se encuentra nuestro sitio web de proyecto integrador
 
-´´´SQL
+```sql
 CREATE TABLE images (
   id INT AUTO_INCREMENT PRIMARY KEY,
   url VARCHAR(255) NOT NULL
@@ -22,6 +22,6 @@ CREATE TABLE products (
   FOREIGN KEY (category_id) REFERENCES categories(id),
   FOREIGN KEY (image_id) REFERENCES images(id)
 );
+
 ALTER TABLE products
 ADD COLUMN active TINYINT(1) DEFAULT 1;
-´´´
