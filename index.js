@@ -1,119 +1,137 @@
 const express = require('express');
-const multer = require('multer');
-const axios = require('axios');
-const fs = require('fs');
-const mysql = require('mysql2');
 const path = require('path');
-
-// Configuración del servidor Express
+const mysql = require('mysql2');
+const session = require('express-session');
+const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
 
-// Configuración para Multer
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'uploads/');
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname);
-  }
-});
-const upload = multer({ storage: storage });
-
-// Configuración de conexión a MySQL
+// Configuración para la base de datos MySQL
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: 'soloyo77',
-  database: 'dbAplicacionesWeb'
+  database: 'dbAplicacionesWeb',
+  port: 3306
 });
 
-db.connect((err) => {
+// Conexión a la base de datos
+db.connect(err => {
   if (err) throw err;
-  console.log('Connected to MySQL database.');
+  console.log('Conectado a la base de datos MySQL.');
 });
 
-// Middleware para servir archivos estáticos
-app.use(express.static('public'));
+// Configuración de middlewares
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'public')));
 
-// Ruta para mostrar el formulario
-app.get('/postProduct.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'postProduct.html'));
+// Configuración de sesiones
+app.use(session({
+  secret: 'mi-secreto',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false } // Cambia a `true` si estás usando HTTPS
+}));
+
+// Ruta para la página de inicio de sesión
+app.get('/login', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
 
-// Ruta para manejar el formulario de subida de imágenes
-app.post('/upload', upload.single('image'), async (req, res) => {
-  try {
-    const imagePath = req.file.path;
-    const image = fs.readFileSync(imagePath);
-    const base64Image = Buffer.from(image).toString('base64');
+// Ruta para el inicio de sesión (método POST)
+app.post('/login', (req, res) => {
+  const { email, password } = req.body;
+  const query = 'SELECT * FROM users WHERE user_email = ? AND user_password = ?';
+  
+  db.query(query, [email, password], (err, results) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send('Error en el servidor');
+    }
+    if (results.length > 0) {
+      req.session.user = results[0];
+      res.redirect('/');
+    } else {
+      res.redirect('/login');
+    }
+  });
+});
 
-    // Subir la imagen a Imgur
-    const imgurResponse = await axios.post('https://api.imgur.com/3/image', {
-      image: base64Image,
-      type: 'base64'
-    }, {
-      headers: {
-        Authorization: 'TianguisUTCH2'
-      }
-    });
-
-    // Obtener la URL de la imagen subida
-    const imageUrl = imgurResponse.data.data.link;
-
-    // Guardar la URL en la base de datos
-    db.query('INSERT INTO images (url) VALUES (?)', [imageUrl], (err, results) => {
-      if (err) throw err;
-
-      // Obtener el ID de la imagen
-      const imageId = results.insertId;
-
-      // Obtener el resto de los datos del producto
-      const { name, price, category, description } = req.body;
-
-      // Insertar el producto en la base de datos
-      db.query('INSERT INTO products (name, price, category_id, description, image_id) VALUES (?, ?, ?, ?, ?)', [name, price, category, description, imageId], (err) => {
-        if (err) throw err;
-
-        // Eliminar el archivo local después de subir
-        fs.unlinkSync(imagePath);
-
-        res.send('Producto añadido exitosamente.');
-      });
-    });
-  } catch (error) {
-    res.status(500).send('Error al subir la imagen: ' + error.message);
+// Ruta para la página principal
+app.get('/', (req, res) => {
+  if (req.session.user) {
+    res.send(`Bienvenido ${req.session.user.user_nombre} ${req.session.user.user_apellido}!`);
+  } else {
+    res.send('No has iniciado sesión.');
   }
 });
 
-// Ruta para mostrar la página de marketplace
-app.get('/marketplace.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'marketplace.html'));
+// Ruta para la página de publicación de productos
+app.get('/postProducto', (req, res) => {
+  if (req.session.user) {
+    res.sendFile(path.join(__dirname, 'public', 'postProducto.html'));
+  } else {
+    res.redirect('/login');
+  }
 });
 
-// Ruta para obtener los productos publicados
-app.get('/api/products', (req, res) => {
-  db.query(`
-    SELECT p.name, p.price, p.description, p.active, i.url AS image_url
-    FROM products p
-    JOIN images i ON p.image_id = i.id
-  `, (err, results) => {
-    if (err) throw err;
-    res.json(results);
+// Ruta para manejar el formulario de publicación de productos (método POST)
+app.post('/postProducto', (req, res) => {
+  const { name, price, category, description } = req.body;
+  // Aquí deberías tener la lógica para manejar el archivo de imagen y guardar la URL en la base de datos
+
+  // Suponiendo que la lógica para manejar el archivo de imagen y guardarlo en la base de datos está implementada
+  // Y tienes un ID de producto generado
+  res.send('Producto publicado con éxito.');
+});
+
+// Ruta para obtener productos
+app.get('/getProducts', (req, res) => {
+  const query = `
+      SELECT p.id, p.name, p.price, c.name AS category, p.description, i.url AS img
+      FROM products p
+      LEFT JOIN categories c ON p.category_id = c.id
+      LEFT JOIN images i ON p.image_id = i.id
+      WHERE p.active = 1;
+  `;
+
+  db.query(query, (err, results) => {
+      if (err) {
+          console.error(err);
+          return res.status(500).send('Error en el servidor');
+      }
+      res.json(results);
   });
 });
 
-// Ruta para obtener las categorías
-app.get('/api/categories', (req, res) => {
-  db.query('SELECT id, name FROM categories', (err, results) => {
-    if (err) throw err;
-    res.json(results);
+
+// Ruta para obtener información del usuario autenticado
+app.get('/user-info', (req, res) => {
+  if (req.session.user) {
+    res.json({
+      isAuthenticated: true,
+      userName: `${req.session.user.user_nombre} ${req.session.user.user_apellido}`
+    });
+  } else {
+    res.json({
+      isAuthenticated: false
+    });
+  }
+});
+
+// Ruta para manejar el cierre de sesión
+app.get('/logout', (req, res) => {
+  req.session.destroy(err => {
+    if (err) {
+      return res.status(500).send('Error al cerrar sesión');
+    }
+    res.redirect('/login');
   });
 });
 
-// Configurar el middleware para servir archivos de subida
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-
+// Iniciar el servidor
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}/`);
+  console.log(`Servidor escuchando en http://localhost:${port}`);
 });
+

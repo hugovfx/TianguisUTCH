@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tianguis UTCH</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+
+    <style>
+        #language-options {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        #language-options li {
+            padding: 8px 16px;
+            cursor: pointer;
+        }
+
+        #language-options li:hover {
+            background-color: #ddd;
+        }
+
+        .header__top__right__language:hover #language-options {
+            display: block;
+        }
+
+        .featured__item {
+            position: relative;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* Estilo para el modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="header__top__left">
+                            <ul>
+                                <li><i class="fa fa-envelope"></i> tianguisutch@gmail.com</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="header__top__right">
+                            <div class="header__top__right__language">
+                                <img src="img/language.png" id="language-img" alt="" style="width: 30px;">
+                                <div id="current-language">English</div>
+                                <span class="arrow_carrot-down"></span>
+                                <ul id="language-options">
+                                    <li data-lang="en">English</li>
+                                    <li data-lang="es">Español</li>
+                                </ul>
+                            </div>
+                            <div class="header__top__right__auth">
+                                <a href="#" id="auth-link"><i class="fa fa-user"></i><span id="login-text">Login</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <nav class="header__menu">
+                        <ul>
+                            <li class="active"><a href="./index.html" id="home-link">Home</a></li>
+                            <li><a href="./shop-grid.html" id="shop-link">Shop</a></li>
+                            <li><a href="./blog.html" id="blog-link">Blog</a></li>
+                            <li><a href="./contact.html" id="contact-link">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="humberger__open">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    <!-- Header Section End -->
+
+    <!-- Categories Section Begin -->
+    <section class="categories">
+        <div class="container">
+            <div class="row">
+                <div class="categories__slider owl-carousel">
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-setbg="img/categories/cat-1.jpg">
+                            <h5><a href="#" id="cat1-link">Fresh Fruit</a></h5>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-setbg="img/categories/cat-2.jpg">
+                            <h5><a href="#" id="cat2-link">Dried Fruit</a></h5>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-setbg="img/categories/cat-3.jpg">
+                            <h5><a href="#" id="cat3-link">Vegetables</a></h5>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-setbg="img/categories/cat-4.jpg">
+                            <h5><a href="#" id="cat4-link">Drink Fruits</a></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Categories Section End -->
+
+    <!-- Featured Section Begin -->
+    <section class="featured spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2 id="featured-title">Featured Product</h2>
+                    </div>
+                    <div class="featured__controls">
+                        <ul>
+                            <li class="active" data-filter="*" id="all-filter">All</li>
+                            <li data-filter=".Otros" id="oranges-filter">Oranges</li>
+                            <li data-filter=".fresh-meat" id="meat-filter">Fresh Meat</li>
+                            <li data-filter=".vegetables" id="vegetables-filter">Vegetables</li>
+                            <li data-filter=".fastfood" id="fastfood-filter">Fastfood</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Inicio de productos -->
+            <div class="row featured__filter" id="product-list">
+
+                <!-- Aqui se añadira el codigo  de cada producto -->
+                
+            </div>
+            <!-- Final de productos -->
+
+        </div>
+    </section>
+    <!-- Featured Section End -->
+
+    <!-- Modal para mostrar detalles del producto -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalName"></h2>
+            <p id="modalPrice"></p>
+            <p id="modalCategory"></p>
+            <p id="modalDescription"></p>
+            <img id="modalImage" src="" alt="Product Image" />
+        </div>
+    </div>
+
+    <!-- Footer Section Begin -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-md-6 col-sm-6">
+                    <div class="footer__about">
+                        <div class="footer__about__logo">
+                            <a href="#"><img src="img/logo.png" alt=""></a>
+                        </div>
+                        <ul>
+                            <li><i class="fa fa-map-marker"></i> Av. Montes Americanos, Sector 35, 31216 Chihuahua, Chih.</li>
+                            <li><i class="fa fa-phone"></i> +52 614 432 2000</li>
+                            <li><i class="fa fa-envelope"></i> tianguisutch@gmail.com</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
+                    <div class="footer__widget">
+                        <h6 id="newsletter-title">Join Our Newsletter Now</h6>
+                        <p id="newsletter-description">Get E-mail updates about our latest shop and special offers.</p>
+                        <form action="#">
+                            <input type="text" placeholder="Enter your mail">
+                            <button type="submit" class="site-btn">Subscribe</button>
+                        </form>
+                        <div class="footer__widget__social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-pinterest"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 col-sm-6 offset-lg-1">
+                    <div class="footer__widget">
+                        <h6 id="footer-title">Quick Links</h6>
+                        <ul>
+                            <li><a href="#" id="about-link">About</a></li>
+                            <li><a href="#" id="contact-link-footer">Contact</a></li>
+                            <li><a href="#" id="faq-link">FAQs</a></li>
+                            <li><a href="#" id="support-link">Support</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/mixitup.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/language.js"></script>
+    <script src="js/product.js"></script>
+    
+    <script>
+
+        
+        // Verificar si el usuario está autenticado
+        function checkAuth() {
+            fetch('/getUser', {
+                method: 'GET',
+                credentials: 'include'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.authenticated) {
+                    document.getElementById('login-text').textContent = data.user.name;
+                    document.getElementById('auth-link').href = '/profile';
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        // Llamar a la función cuando la página se cargue
+        document.addEventListener('DOMContentLoaded', checkAuth);
+
+        // Función para agregar productos al DOM
+        function addElement(id, name, price, category, img, description) {
+            var div = document.getElementById("product-list");
+            var productHTML = 
+            `<div class="col-lg-3 col-md-4 col-sm-6 mix ${category}">
+                <div class="featured__item" onclick="showProductModal('${id}', '${name}', '${price}', '${category}', '${description}', '${img}')">
+                    <img src="${img}" alt="Featured Item" class="featured__item__pic">
+                    <div class="featured__item__text">
+                        <h6><a href="#" id="prod1-link">${name}</a></h6>
+                        <h5>$${price}</h5>
+                    </div>
+                </div>
+            </div>`;
+            div.innerHTML += productHTML;
+        }
+
+        // Función para obtener productos desde el servidor y agregarlos al DOM
+        function loadProducts() {
+            fetch('/getProducts', {
+                method: 'GET'
+            })
+            .then(response => response.json())
+            .then(products => {
+                products.forEach(product => {
+                    addElement(product.id, product.name, product.price, product.category, product.img, product.description);
+                });
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        // Función para mostrar el modal con los detalles del producto
+        function showProductModal(id, name, price, category, description, img) {
+            var modal = document.getElementById("productModal");
+            var modalName = document.getElementById("modalName");
+            var modalPrice = document.getElementById("modalPrice");
+            var modalCategory = document.getElementById("modalCategory");
+            var modalDescription = document.getElementById("modalDescription");
+            var modalImage = document.getElementById("modalImage");
+
+            modalName.textContent = name;
+            modalPrice.textContent = "$" + price;
+            modalCategory.textContent = category;
+            modalDescription.textContent = description;
+            modalImage.src = img;
+
+            modal.style.display = "block";
+        }
+
+        // Llamar a la función para cargar los productos cuando la página se cargue
+        document.addEventListener('DOMContentLoaded', loadProducts);
+
+        // Cerrar el modal cuando se hace clic en el botón de cerrar
+        var span = document.getElementsByClassName("close")[0];
+        span.onclick = function() {
+            var modal = document.getElementById("productModal");
+            modal.style.display = "none";
+        }
+
+        // Cerrar el modal cuando se hace clic fuera del modal
+        window.onclick = function(event) {
+            var modal = document.getElementById("productModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
