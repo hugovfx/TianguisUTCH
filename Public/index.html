@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tianguis UTCH</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+
+    <style>
+        #language-options {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        #language-options li {
+            padding: 8px 16px;
+            cursor: pointer;
+        }
+
+        #language-options li:hover {
+            background-color: #ddd;
+        }
+
+        .header__top__right__language:hover #language-options {
+            display: block;
+        }
+
+        .featured__item {
+            position: relative;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Ajusta el tamaño, desenfoque y color según tus necesidades */
+            border-radius: 8px; /* Opcional: agrega bordes redondeados */
+            overflow: hidden; /* Asegura que la sombra no se extienda fuera del contenedor */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="header__top__left">
+                            <ul>
+                                <li><i class="fa fa-envelope"></i> tianguisutch@gmail.com</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6">
+                        <div class="header__top__right">
+                            <div class="header__top__right__language">
+                                <img src="img/language.png" id="language-img" alt="" style="width: 30px;">
+                                <div id="current-language">English</div>
+                                <span class="arrow_carrot-down"></span>
+                                <ul id="language-options">
+                                    <li data-lang="en">English</li>
+                                    <li data-lang="es">Español</li>
+                                </ul>
+                            </div>
+                            <div class="header__top__right__auth">
+                                <a href="#"><i class="fa fa-user"></i><span id="login-text">Login</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <nav class="header__menu">
+                        <ul>
+                            <li class="active"><a href="./index.html" id="home-link">Home</a></li>
+                            <li><a href="./shop-grid.html" id="shop-link">Shop</a></li>
+                            <li><a href="./blog.html" id="blog-link">Blog</a></li>
+                            <li><a href="./contact.html" id="contact-link">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="humberger__open">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    <!-- Header Section End -->
+
+    <!-- Categories Section Begin -->
+    <section class="categories">
+        <div class="container">
+            <div class="row">
+                <div class="categories__slider owl-carousel">
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-setbg="img/categories/cat-1.jpg">
+                            <h5><a href="#" id="cat1-link">Fresh Fruit</a></h5>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-setbg="img/categories/cat-2.jpg">
+                            <h5><a href="#" id="cat2-link">Dried Fruit</a></h5>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-setbg="img/categories/cat-3.jpg">
+                            <h5><a href="#" id="cat3-link">Vegetables</a></h5>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-setbg="img/categories/cat-4.jpg">
+                            <h5><a href="#" id="cat4-link">Drink Fruits</a></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Categories Section End -->
+
+    <!-- Featured Section Begin -->
+    <section class="featured spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2 id="featured-title">Featured Product</h2>
+                    </div>
+                    <div class="featured__controls">
+                        <ul>
+                            <li class="active" data-filter="*" id="all-filter">All</li>
+                            <li data-filter=".oranges" id="oranges-filter">Oranges</li>
+                            <li data-filter=".fresh-meat" id="meat-filter">Fresh Meat</li>
+                            <li data-filter=".vegetables" id="vegetables-filter">Vegetables</li>
+                            <li data-filter=".fastfood" id="fastfood-filter">Fastfood</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Inicio de productos -->
+            <div class="row featured__filter" id="product-list">
+
+                <!-- Aqui se añadira el codigo  de cada producto -->
+                
+            </div>
+            <!-- Final de productos -->
+
+        </div>
+    </section>
+    <!-- Featured Section End -->
+
+    <!-- Footer Section Begin -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-md-6 col-sm-6">
+                    <div class="footer__about">
+                        <div class="footer__about__logo">
+                            <a href="#"><img src="img/logo.png" alt=""></a>
+                        </div>
+                        <ul>
+                            <li><i class="fa fa-map-marker"></i> Texcoco, Estado de México, México</li>
+                            <li><i class="fa fa-phone"></i> +52 55 258 39 77</li>
+                            <li><i class="fa fa-envelope"></i> tianguisutch@gmail.com</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6">
+                    <div class="footer__widget">
+                        <h6 id="footer-links-title">Useful Links</h6>
+                        <ul>
+                            <li><a href="./index.html" id="footer-home-link">Home</a></li>
+                            <li><a href="./shop-grid.html" id="footer-shop-link">Shop</a></li>
+                            <li><a href="./blog.html" id="footer-blog-link">Blog</a></li>
+                            <li><a href="./contact.html" id="footer-contact-link">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/mixitup.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+        const translations = {
+            en: {
+                "current-language": "English",
+                "login-text": "Login",
+                "home-link": "Home",
+                "shop-link": "Shop",
+                "blog-link": "Blog",
+                "contact-link": "Contact",
+                "featured-title": "Featured Product",
+                "all-filter": "All",
+                "oranges-filter": "Oranges",
+                "meat-filter": "Fresh Meat",
+                "vegetables-filter": "Vegetables",
+                "fastfood-filter": "Fastfood",
+                "prod1-link": "Organic Bananas",
+                "footer-links-title": "Useful Links",
+                "footer-home-link": "Home",
+                "footer-shop-link": "Shop",
+                "footer-blog-link": "Blog",
+                "footer-contact-link": "Contact"
+            },
+            es: {
+                "current-language": "Español",
+                "login-text": "Iniciar sesión",
+                "home-link": "Inicio",
+                "shop-link": "Tienda",
+                "blog-link": "Blog",
+                "contact-link": "Contacto",
+                "featured-title": "Producto Destacado",
+                "all-filter": "Todos",
+                "oranges-filter": "Naranjas",
+                "meat-filter": "Carne Fresca",
+                "vegetables-filter": "Verduras",
+                "fastfood-filter": "Comida Rápida",
+                "prod1-link": "Plátanos Orgánicos",
+                "footer-links-title": "Enlaces Útiles",
+                "footer-home-link": "Inicio",
+                "footer-shop-link": "Tienda",
+                "footer-blog-link": "Blog",
+                "footer-contact-link": "Contacto"
+            }
+        };
+
+        function changeLanguage(lang) {
+            const elements = document.querySelectorAll('[id]');
+            elements.forEach(element => {
+                const key = element.id;
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            
+            // Change language image
+            const languageImg = document.getElementById('language-img');
+            if (lang === 'es') {
+                languageImg.src = 'img/MXlenguaje.png';
+            } else {
+                languageImg.src = 'img/language.png';
+            }
+        }
+
+        document.getElementById('language-options').addEventListener('click', function(e) {
+            if (e.target.tagName === 'LI') {
+                const lang = e.target.dataset.lang;
+                changeLanguage(lang);
+            }
+        });
+
+        
+
+        function addElement(name, price, category, img){
+            var div = document.getElementById("product-list");
+            div.innerHTML += 
+            `<div class="col-lg-3 col-md-4 col-sm-6 mix ${category} fresh-meat">
+                <div class="featured__item">
+                    <img src="${img}" alt="Featured Item" class="featured__item__pic">
+                    <div class="featured__item__text">
+                        <h6><a href="#" id="prod1-link">${name}</a></h6>
+                        <h5>$${price}</h5>
+                    </div>
+                </div>
+            </div>
+`;
+        }
+        addElement("Naranja rosa",15.00, "fastfood", "https://t1.gstatic.com/licensed-image?q=tbn:ANd9GcR8cwEvC4A6CutRrMu2vXyQxuAvoUzEdeo34TZH2E6tjxX3yAeKJaBU_Ib5yFpgtpoA");
+        addElement("Hamburguesa",25.00, "fastfood", "https://img.freepik.com/foto-gratis/deliciosa-hamburguesa-aislado-sobre-fondo-blanco_125540-3368.jpg")
+        addElement("Taco", 20.00, "fastfood", "https://png.pngtree.com/png-clipart/20230429/original/pngtree-mexican-taco-crepes-with-lemon-sauce-psd-transparent-png-image_9121918.png")
+        addElement("Vape", 200.00, "all", "https://www.grino.mx/cdn/shop/files/X-boxmint.png?v=1712783111")
+        
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Marketplace</title>
+    <style>
+        .product {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .product img {
+            max-width: 200px;
+            height: auto;
+        }
+        .product.active {
+            border-color: green;
+        }
+        .product.inactive {
+            border-color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Marketplace</h1>
+    <div id="products"></div>
+
+    <script>
+        async function fetchProducts() {
+            const response = await fetch('/api/products');
+            const products = await response.json();
+            const productsContainer = document.getElementById('products');
+
+            products.forEach(product => {
+                const productDiv = document.createElement('div');
+                productDiv.className = 'product ' + (product.active ? 'active' : 'inactive');
+
+                const img = document.createElement('img');
+                img.src = product.image_url;
+                img.alt = product.name;
+
+                const name = document.createElement('h2');
+                name.textContent = product.name;
+
+                const price = document.createElement('p');
+                price.textContent = `Precio: ${product.price} €`;
+
+                const description = document.createElement('p');
+                description.textContent = product.description;
+
+                productDiv.appendChild(img);
+                productDiv.appendChild(name);
+                productDiv.appendChild(price);
+                productDiv.appendChild(description);
+
+                productsContainer.appendChild(productDiv);
+            });
+        }
+
+        fetchProducts();
+    </script>
+</body>
+</html>
