@@ -3,29 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <title>Publicar Producto</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    
+    <style>
+        .contact-form {
+            padding: 60px 0;
+        }
+        .contact__form__title h2 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .contact-form form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .contact-form form input,
+        .contact-form form textarea,
+        .contact-form form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .contact-form form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #ff6f61;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .contact-form form button:hover {
+            background-color: #ff4c3b;
+        }
+    </style>
 </head>
 <body>
-    <h1>Publicar Producto</h1>
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        <label for="name">Nombre:</label>
-        <input type="text" id="name" name="name" required><br><br>
-        
-        <label for="price">Precio:</label>
-        <input type="number" id="price" name="price" step="0.01" required><br><br>
-        
-        <label for="category">Categoría:</label>
-        <select id="category" name="category" required>
-            <!-- Opciones de categoría serán cargadas aquí dinámicamente -->
-        </select><br><br>
-        
-        <label for="description">Descripción:</label>
-        <textarea id="description" name="description" required></textarea><br><br>
-        
-        <label for="image">Imagen:</label>
-        <input type="file" id="image" name="image" accept="image/*" required><br><br>
-        
-        <button type="submit">Publicar</button>
-    </form>
+    <div class="contact-form spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="contact__form__title">
+                        <h2>Publicar producto</h2>
+                    </div>
+                </div>
+            </div>
+            <form action="/postProducto" method="post" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <label for="name">Nombre:</label>
+                        <input type="text" id="name" name="name" required><br><br>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <label for="price">Precio:</label>
+                        <input type="number" id="price" name="price" step="0.01" required><br><br>
+                    </div>
+                    <div class="col-lg-6">
+                        <label for="category">Categoría:</label>
+                        <select id="category" name="category" required>
+                            <!-- Opciones de categoría serán cargadas aquí dinámicamente -->
+                        </select><br><br>
+                    </div>
+                    <div class="col-lg-12">
+                        <label for="description">Descripción:</label>
+                        <textarea id="description" name="description" required></textarea><br><br>
+                    </div>
+                    <div class="col-lg-12">
+                        <label for="image">Imagen:</label>
+                        <input type="file" id="image" name="image" accept="image/*" required><br><br>
+                    </div>
+                    <div class="col-lg-12 text-center">
+                        <button type="submit" class="site-btn">Publicar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <script>
         // Función para cargar las categorías desde el servidor

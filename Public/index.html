@@ -116,7 +116,7 @@
     <section class="categories">
         <div class="container">
             <div class="row">
-                <div class="categories__slider owl-carousel">
+                <div class="categories__slider owl-carousel" id="categories_container">
                     <div class="col-lg-3">
                         <div class="categories__item set-bg" data-setbg="img/categories/cat-1.jpg">
                             <h5><a href="#" id="cat1-link">Fresh Fruit</a></h5>
@@ -302,6 +302,7 @@
             </div>
 `;
         }
+
         addElement("Naranja rosa",15.00, "fastfood", "https://t1.gstatic.com/licensed-image?q=tbn:ANd9GcR8cwEvC4A6CutRrMu2vXyQxuAvoUzEdeo34TZH2E6tjxX3yAeKJaBU_Ib5yFpgtpoA");
         addElement("Hamburguesa",25.00, "fastfood", "https://img.freepik.com/foto-gratis/deliciosa-hamburguesa-aislado-sobre-fondo-blanco_125540-3368.jpg")
         addElement("Taco", 20.00, "fastfood", "https://png.pngtree.com/png-clipart/20230429/original/pngtree-mexican-taco-crepes-with-lemon-sauce-psd-transparent-png-image_9121918.png")
@@ -314,12 +315,22 @@
             .then(response => response.json())
             .then(products => {
                 products.forEach(product => {
-                    addElement(product.name, product.price, product.category, product.img);
+                    addCategorieItem(product.name, product.img);
                 });
             })
             .catch(error => console.error('Error:', error));
         }
         
+        function addCategorieItem(name, img){
+            var div = document.getElementById("categories_container");
+            div.innerHTML += 
+            `<div class="col-lg-3">
+                <div class="categories__item set-bg" data-setbg="img/categories/cat-2.jpg">
+                    <h5><a href="#" id="cat2-link">${name}</a></h5>
+                </div>
+            </div>`;
+        }
+
         
 
     </script>
