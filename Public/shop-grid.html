@@ -125,7 +125,7 @@
                         <ul>
                             <li><a href="#" id="food">Food</a></li>
                             <li><a href="#" id="computing">Computing</a></li>
-                            <li><a href="#"id="auto">Fruit & Nut Gifts</a></li>
+                            <li><a href="#"id="auto">Vehicles</a></li>
                             <li><a href="#" id="services">Services</a></li>
                             <li><a href="#"id="others">Others</a></li>
                         </ul>
@@ -165,7 +165,7 @@
                             <ul>
                                 <li><a href="#" id="food">Food</a></li>
                                 <li><a href="#" id="computing">Computing</a></li>
-                                <li><a href="#"id="auto">Fruit & Nut Gifts</a></li>
+                                <li><a href="#"id="auto">Vehicles</a></li>
                                 <li><a href="#" id="services">Services</a></li>
                                 <li><a href="#"id="others">Others</a></li>
                             </ul>
@@ -259,7 +259,7 @@
                         <div class="row">
                             <div class="col-lg-4 col-md-5">
                                 <div class="filter__sort">
-                                    <span>Sort By</span>
+                                    <span id="sort">Sort By</span>
                                     <select>
                                         <option value="0">Default</option>
                                         <option value="0">Default</option>
@@ -269,12 +269,6 @@
                             <div class="col-lg-4 col-md-4">
                                 <div class="filter__found">
                                     <h6><span>16</span> Products found</h6>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-3">
-                                <div class="filter__option">
-                                    <span class="icon_grid-2x2"></span>
-                                    <span class="icon_ul"></span>
                                 </div>
                             </div>
                         </div>
@@ -517,6 +511,7 @@
     <script>
        const translations = {
     en: {
+        "sort":"Sort by",
         "latest":"Latest Products",
         "categorias":"Categories",
         "mandar": "SEND MESSAGE",
@@ -539,6 +534,7 @@
 
     },
     es: {
+        "sort":"Ordenar por",
         "latest":"Ultimo Productos",
         "categorias":"Categorias",
         "mandar": "ENVIAR MENSAJE",
