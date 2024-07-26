@@ -1,31 +1,57 @@
 <!DOCTYPE html>
 <html lang="zxx">
+
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Ogani Template">
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login</title>
+    <title>Tianguis UTCH</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="/css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="/css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="/css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+
     <style>
-        .error-message {
+        #language-options {
             display: none;
-            color: red;
-            text-align: center;
-            margin-top: 20px;
+            position: absolute;
+            background-color: #f9f9f9;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        #language-options li {
+            padding: 8px 16px;
+            cursor: pointer;
+        }
+
+        #language-options li:hover {
+            background-color: #ddd;
+        }
+
+        .header__top__right__language:hover #language-options {
+            display: block;
+        }
+
+        .featured__item {
+            position: relative;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            /* Ajusta el tamaño, desenfoque y color según tus necesidades */
+            border-radius: 8px;
+            /* Opcional: agrega bordes redondeados */
+            overflow: hidden;
+            /* Asegura que la sombra no se extienda fuera del contenedor */
         }
     </style>
 </head>
@@ -41,26 +67,27 @@
         <div class="header__top">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 col-md-6">
                         <div class="header__top__left">
                             <ul>
                                 <li><i class="fa fa-envelope"></i> tianguisutch@gmail.com</li>
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+
+                    <div class="col-lg-6 col-md-6">
                         <div class="header__top__right">
                             <div class="header__top__right__language">
-                                <img src="/img/language.png" alt="Language">
-                                <div>English</div>
+                                <img src="img/language.png" id="language-img" alt="" style="width: 30px;">
+                                <div id="current-language">English</div>
                                 <span class="arrow_carrot-down"></span>
-                                <ul>
-                                    <li><a href="#">Spanish</a></li>
-                                    <li><a href="#">English</a></li>
+                                <ul id="language-options">
+                                    <li data-lang="en">English</li>
+                                    <li data-lang="es">Español</li>
                                 </ul>
                             </div>
                             <div class="header__top__right__auth">
-                                <a href="#"><i class="fa fa-user"></i> Login</a>
+                                <a href="#"><i class="fa fa-user"></i><span id="login-text">Login</span></a>
                             </div>
                         </div>
                     </div>
@@ -69,26 +96,13 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-lg-3">
-                    <div class="header__logo">
-                        <a href="/index.html"><img src="/img/logo.png" alt="Logo" style="height: 200px;"></a>
-                    </div>
-                </div>
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li><a href="/index.html">Home</a></li>
-                            <li><a href="/shop-grid.html">Shop</a></li>
-                            <li><a href="#">Pages</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="/shop-details.html">Shop Details</a></li>
-                                    <li><a href="/shoping-cart.html">Shopping Cart</a></li>
-                                    <li><a href="/checkout.html">Check Out</a></li>
-                                    <li><a href="/blog-details.html">Blog Details</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="/blog.html">Blog</a></li>
-                            <li><a href="/contact.html">Contact</a></li>
+                            <li class="active"><a href="./index.html" id="home-link">Home</a></li>
+                            <li><a href="./shop-grid.html" id="shop-link">Shop</a></li>
+                            <li><a href="./blog.html" id="blog-link">Blog</a></li>
+                            <li><a href="./contact.html" id="contact-link">Contact</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -99,27 +113,28 @@
         </div>
     </header>
     <!-- Header Section End -->
-     
+
+
     <!-- Login Form Begin -->
     <div class="contact-form spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="contact__form__title">
-                        <h2>Login</h2>
+                        <h2 id="login-text">Login</h2>
                     </div>
                 </div>
             </div>
-            <form action="/login" method="POST">
+            <form action="login" method="POST">
                 <div class="col-lg-12">
                     <div class="col-lg-12">
-                      <input type="email" name="email" placeholder="Email" required>
+                        <input type="email" name="email" placeholder="Email" id="plemail" required>
                     </div>
                     <div class="col-lg-12 text-center">
-                      <input type="password" name="password" placeholder="Password" required>
+                        <input type="password" name="password" placeholder="Password" required id="plpassword">
                     </div>
                     <div class="col-lg-12 text-center">
-                        <button type="submit" class="site-btn">Login</button>
+                        <button type="submit" class="site-btn" id="login-text">Login</button>
                     </div>
                 </div>
             </form>
@@ -136,23 +151,22 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__about__logo">
-                            <a href="/index.html"><img src="/img/logo.png" alt="Logo"></a>
+                            <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
                         </div>
                         <ul>
-                            <li>Address: Av. Montes Americanos, Sector 35, 31216 Chihuahua, Chih.</li>
-                            <li>Phone: +55 614-432-2000</li>
-                            <li>Email: tianguisutch@gmail.com</li>
+                            <li><p id="address">Address</p> Av. Montes Americanos, Sector 35, 31216 Chihuahua, Chih.</li>
+                            <li><p id="email">Email</p> tianguisutch@gmail.com</li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
                     <div class="footer__widget">
-                        <h6>Useful Links</h6>
+                        <h6 id="footer-links-title">Useful Links</h6>
                         <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">About Our Shop</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Our Sitemap</a></li>
+                            <li><a href="#" id="home-link">Home</a></li>
+                            <li><a href="#" id="shop-grid">Shop</a></li>
+                            <li><a href="#" id="blog-link">Blog</a></li>
+                            <li><a href="#" id="contact-link">Contact</a></li>
                         </ul>
                     </div>
                 </div>
@@ -162,27 +176,94 @@
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
-    <script src="/js/jquery-3.3.1.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/jquery.nice-select.min.js"></script>
-    <script src="/js/jquery-ui.min.js"></script>
-    <script src="/js/jquery.slicknav.js"></script>
-    <script src="/js/mixitup.min.js"></script>
-    <script src="/js/owl.carousel.min.js"></script>
-    <script src="/js/main.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/mixitup.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
 
-    <!-- Script para mostrar el mensaje de error -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const errorMessage = urlParams.get('error');
-            
-            if (errorMessage) {
-                const errorDiv = document.getElementById('error-message');
-                errorDiv.textContent = errorMessage;
-                errorDiv.style.display = 'block';
+        const translations = {
+            en: {
+                "sort": "Sort by",
+                "latest": "Latest Products",
+                "categorias": "Categories",
+                "mandar": "SEND MESSAGE",
+                "plantilla": "Template",
+                "current-language": "English",
+                "login-text": "Login",
+                "home-link": "Home",
+                "shop-link": "Shop",
+                "blog-link": "Blog",
+                "contact-link": "Contact",
+                "footer-links-title": "Useful Links",
+                "address":"Address",
+                "email":"Email",
+                "plemail":"Email",
+                "plpassword":"Password"
+            },
+            es: {
+                "sort": "Ordenar por",
+                "latest": "Ultimo Productos",
+                "categorias": "Categorias",
+                "mandar": "ENVIAR MENSAJE",
+                "plantilla": "Plantilla",
+                "current-language": "Español",
+                "login-text": "Iniciar sesión",
+                "home-link": "Inicio",
+                "shop-link": "Tienda",
+                "blog-link": "Blog",
+                "contact-link": "Contacto",
+                "footer-links-title": "Enlaces Útiles",
+                "address":"Direccion",
+                "email":"Correo electronico",
+                "plemail":"Correo electronico",
+                "plpassword":"Contraseña"
+
+
+            }
+        };
+
+
+        function changeLanguage(lang) {
+            const elements = document.querySelectorAll('[id]');
+            elements.forEach(element => {
+                const key = element.id;
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            // Change placeholders
+            const inputs = document.querySelectorAll('input[placeholder]');
+            inputs.forEach(input => {
+                const key = input.id;
+                if (translations[lang][key]) {
+                    input.placeholder = translations[lang][key];
+                }
+            });
+
+            // Change language image
+            const languageImg = document.getElementById('language-img');
+            if (lang === 'es') {
+                languageImg.src = 'img/MXlenguaje.png';
+            } else {
+                languageImg.src = 'img/language.png';
+            }
+        }
+
+
+        document.getElementById('language-options').addEventListener('click', function (e) {
+            if (e.target.tagName === 'LI') {
+                const lang = e.target.dataset.lang;
+                changeLanguage(lang);
             }
         });
+
     </script>
 </body>
+
 </html>
